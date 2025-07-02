@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamP1.Grupo3.PICW</title>
+    <link rel="stylesheet" href="./public/css/estilos.css">
+    <link rel="manifest" href="./manifest.json">
+</head>
+<body>
+    
+    <!-- Aqui colocamos un div para hacer una caratula hemos creado estilos incluidos en el div -->
+     <div style="text-align: center; margin: 20px;">
+        <h1>Sitema de Facturacion con Custom Elements</h1>
+        <img src="./public/img/Logo_ESPE.png" styles="max-width:200px;">
+        <div style="margin-top: 10px;">
+            <h1>INTEGRANTES</h1>
+            <h3>Yampuezan Burbano Veronica Janeth</h3>
+        </div>
+     </div>
+     <!-- Empezamos las secciones para el ingreso de registros -->
+     <!-- Seccion para registrar clientes -->
+    <section>
+        <h2>REGISTRAR CLIENTES</h2>
+        <input type="text" id="nombre_cliente" placeholder="NOMBRE">
+        <input type="text" id="cedula_cliente" placeholder="CEDULA">
+        <input type="text" id="direccion_cliente" placeholder="DIRECCION">
+        <button onclick="agregarCliente()">Agregar Cliente</button>
+        <ul id="lista_clientes"></ul>
+    </section>
+    <!-- Seccion para registrar productos -->
+    <section>
+        <h2>REGISTRAR PRODUCTOS</h2>
+        <input type="text" id="nombre_producto" placeholder="NOMBRE">
+        <input type="number" id="precio_producto" placeholder="PRECIO">
+        <button onclick="agregarProducto()">Agregar Producto</button>
+        <ul id="lista_productos"></ul>
+    </section>
+    <!-- Seccion para generar factura -->
+    <section>
+        <h2>GENERAR FACTURA</h2>
+        <select id="cliente_factura"></select><br>
+        <select id="producto_factura"></select>
+        <input type="number" id="cantidad_producto" placeholder="CANTIDAD">
+        <button onclick="agregarItemFactura()">Agregar Producto a Factura</button>
+        <ul id="lista_items_factura"></ul>
+        <p id="total_factura"></p>
+        <button onclick="guardarFactura()">Guardar Factura</button>
+    </section>
+    <!-- Seccion para el resumen de Factura que se generan -->
+    <section id="resumen_factura" style="display:none; margin-top:20px;">
+        <h3>RESUMEN DE FACTURAS</h3>
+        <p><strong>Cliente:</strong> <span id="resumen_cliente"></span></p>
+        <p><strong>Fecha:</strong> <span id="resumen_fecha"></span></p>
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="resumen_items"></tbody>
+        </table>
+        <p><strong>Total:</strong> $<span id="resumen_total"></span></p>
+    </section>
+    <script src="/public/js/clientes.js"></script>
+    <script src="./public/js/productos.js"></script>
+    <script src="./public/js/factura.js"></script>
+    <script>
+    // registrar service worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(function(registration) {
+                    console.log('Service Worker registrado con éxito:', registration);
+                })
+                .catch(function(error) {
+                    console.error('Error al registrar el Service Worker:', error);
+                });
+        });
+    } else {
+        console.warn('Service Workers no son soportados en este navegador.');
+    }
+</script>
+</body>
+</html>
