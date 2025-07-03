@@ -1,5 +1,3 @@
-/* Parte 1: Tiffani Nathalia Torres Diaz */
-
 // Creamos una clase para gestionar los productos desde el localStorage.
 class ProductoService {
     static obtenerProductos() {

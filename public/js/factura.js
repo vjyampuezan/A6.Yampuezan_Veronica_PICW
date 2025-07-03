@@ -1,5 +1,3 @@
-// Parte 1: Julio Paguay - Facturación
-
 // Clase para trabajar con facturas, productos y clientes desde localStorage
 class FacturaService {
     static obtenerFacturas() {

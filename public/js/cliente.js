@@ -1,5 +1,3 @@
-/* Parte 1: William Adrian Herrera Juela */
-
 // Definimos una clase para los clientes.
 class ClienteService {
     static obtenerClientes() {
